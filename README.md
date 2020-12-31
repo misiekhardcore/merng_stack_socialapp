@@ -13,4 +13,7 @@
 
 ## GraphQL
 
-  - getPost query to fetch all posts
+  - getPosts query to fetch all posts
+  - getPost query to get one post
+  - createPost mutation to create new post
+  - deletePost mutation to delete post (auth check)
