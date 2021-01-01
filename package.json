@@ -6,7 +6,7 @@
   "author": "misiekhardcore <misiekhardcore@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "apollo-server": "^2.19.1",
