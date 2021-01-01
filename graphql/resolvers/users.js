@@ -23,9 +23,9 @@ function generateToken(user) {
 
 module.exports = {
   Mutation: {
-    async login(_, { loginInput: { username, password } }) {
+    async login(_, {  username, password }) {
       const { valid, errors } = validateLoginInput(username, password);
-      
+
       if (!valid) {
         throw new UserInputError("Validation error", { errors });
       }
@@ -55,10 +55,7 @@ module.exports = {
         token,
       };
     },
-    async register(
-      _,
-      { registerInput: { username, email, password, confirmPassoword } }
-    ) {
+    async register(_, { username, email, password, confirmPassoword }) {
       //Validate user data
       const { valid, errors } = validateRegisterInput(
         username,
