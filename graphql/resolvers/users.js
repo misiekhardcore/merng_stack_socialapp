@@ -55,7 +55,7 @@ module.exports = {
         token,
       };
     },
-    async register(_, { username, email, password, confirmPassoword }) {
+    async register(_, {registerInput:{ username, email, password, confirmPassoword }}) {
       //Validate user data
       const { valid, errors } = validateRegisterInput(
         username,
