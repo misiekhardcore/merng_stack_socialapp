@@ -35,3 +35,8 @@
 **likes**
 
 - **likePost** - mutation to toggle post like action
+
+## Client
+
+ - **create-react-app** - created empty template
+ - **semantic-ui** - for styling
