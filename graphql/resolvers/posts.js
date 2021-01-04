@@ -32,9 +32,13 @@ module.exports = {
   Mutation: {
     createPost: async (_, { body }, context) => {
       const user = checkAuth(context);
+      const errors = {};
 
       if (body.trim() === "") {
-        throw new UserInputError("Post message can not be empty");
+        errors.general = "Post message can not be empty";
+        throw new UserInputError("Post message can not be empty", {
+          errors,
+        });
       }
 
       const newPost = new Post({
@@ -59,17 +63,22 @@ module.exports = {
         const post = await Post.findById(postId);
 
         if (!post) {
-          throw new Error("Post not found");
+          errors.general = "Post not found";
+          throw new Error("Post not found", { errors });
         }
 
         if (user.username === post.username) {
           await post.delete();
           return "Post deleted successfully";
         } else {
-          throw new AuthenticationError("Action not allowed");
+          errors.general = "Action not allowed";
+          throw new AuthenticationError("Action not allowed", {
+            errors,
+          });
         }
       } catch (error) {
-        throw new Error(error);
+        errors.general = { ...error };
+        throw new Error(error, { errors });
       }
     },
     likePost: async (_, { postId }, context) => {
@@ -93,7 +102,10 @@ module.exports = {
 
         await post.save();
         return post;
-      } else throw new UserInputError("Post not found");
+      } else {
+        errors.general = "Post not found";
+        throw new UserInputError("Post not found", { errors });
+      }
     },
   },
   Subscription: {

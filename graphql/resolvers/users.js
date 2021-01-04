@@ -23,7 +23,7 @@ function generateToken(user) {
 
 module.exports = {
   Mutation: {
-    async login(_, {  username, password }) {
+    async login(_, { username, password }) {
       const { valid, errors } = validateLoginInput(username, password);
 
       if (!valid) {
@@ -33,7 +33,7 @@ module.exports = {
       const user = await User.findOne({ username });
 
       if (!user) {
-        errors.general = "User not found";
+        errors.username = "User not found";
         throw new UserInputError("User not found", { errors });
       }
 
@@ -55,7 +55,10 @@ module.exports = {
         token,
       };
     },
-    async register(_, {registerInput:{ username, email, password, confirmPassoword }}) {
+    async register(
+      _,
+      { registerInput: { username, email, password, confirmPassoword } }
+    ) {
       //Validate user data
       const { valid, errors } = validateRegisterInput(
         username,
