@@ -15,7 +15,7 @@ const Login = (props) => {
   };
 
   const { handleChange, handleSubmit, state } = useForm(
-    loginUser,
+    () => logUser(),
     initialState
   );
 
@@ -29,10 +29,6 @@ const Login = (props) => {
     },
     variables: state,
   });
-
-  function loginUser() {
-    logUser();
-  }
 
   return (
     <div className="form-container">
@@ -48,6 +44,7 @@ const Login = (props) => {
           placeholder="Username..."
           type="text"
           value={state.username}
+          error={errors.username || errors.general ? true : false}
           onChange={handleChange}
         />
         <Form.Input
@@ -56,6 +53,7 @@ const Login = (props) => {
           placeholder="Password..."
           type="password"
           value={state.password}
+          error={errors.password || errors.general ? true : false}
           onChange={handleChange}
         />
         <Button type="submit" primary>
