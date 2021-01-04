@@ -38,7 +38,6 @@
 
 ## Client
 
- - **create-react-app** - created empty template
- - **semantic-ui** - for styling
-
- https://youtu.be/n1mdAPFq2Os?list=WL&t=9985
+- **create-react-app** - created empty template
+- **semantic-ui** - for styling
+- **moment** - for date formatting
