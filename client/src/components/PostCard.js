@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import { AuthContext } from "../context/auth";
 import LikeButton from "./LikeButton";
+import DeleteButton from "./DeleteButton";
 
 const PostCard = ({
   post: {
@@ -22,10 +23,6 @@ const PostCard = ({
 
   const handleComment = () => {
     console.log("post");
-  };
-
-  const handleDelete = () => {
-    console.log("delete");
   };
 
   return (
@@ -53,9 +50,7 @@ const PostCard = ({
           </Label>
         </Button>
         {user && user.username === username && (
-          <Button as="div" color="red" onClick={handleDelete} floated="right">
-            <Icon style={{ margin: 0 }} name="trash" />
-          </Button>
+          <DeleteButton postId={id} />
         )}
       </Card.Content>
     </Card>
