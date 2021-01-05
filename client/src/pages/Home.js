@@ -28,9 +28,7 @@ const Home = () => {
             <PostForm />
           </Grid.Column>
         )}
-        {loading ? (
-          <h1>loading...</h1>
-        ) : posts ? (
+        {posts ? (
           posts.map((post) => (
             <Grid.Column
               key={post.id}
