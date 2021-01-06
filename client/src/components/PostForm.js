@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Card, Form, Popup } from "semantic-ui-react";
 import gql from "graphql-tag";
 
 import { useForm } from "../utils/hooks";
@@ -36,38 +36,47 @@ export default function PostForm() {
         data: { ...data, getPosts: [...newData] },
       });
       state.body = "";
+      setErrors({});
     },
   });
 
   return (
-    <>
-      <Form
-        onSubmit={handleSubmit}
-        className={loading ? "loading" : ""}
-      >
-        <Form.Field>
-          <Form.Input
-            placeholder="Hello world!"
-            name="body"
-            onChange={handleChange}
-            error={errors.general ? true : false}
-            value={state.body}
-          />
-          <Button type="submit" color="teal">
-            Add post
-          </Button>
-        </Form.Field>
-      </Form>
-      {Object.keys(errors).length > 0 && (
-        <div className="ui error message">
-          <ul className="list">
-            {Object.values(errors).map((value) => (
-              <li key={value}>{value}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </>
+    <Card fluid>
+      <Card.Content>
+        <Form
+          onSubmit={handleSubmit}
+          className={loading ? "loading" : ""}
+        >
+          <Form.Field>
+            <Form.Input
+              placeholder="Hello world!"
+              name="body"
+              onChange={handleChange}
+              error={errors.general ? true : false}
+              value={state.body}
+            />
+            <Popup
+              inverted
+              content="Add post"
+              trigger={
+                <Button type="submit" color="teal">
+                  Add post
+                </Button>
+              }
+            />
+          </Form.Field>
+        </Form>
+        {Object.keys(errors).length > 0 && (
+          <div className="ui error message">
+            <ul className="list">
+              {Object.values(errors).map((value) => (
+                <li key={value}>{value}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </Card.Content>
+    </Card>
   );
 }
 
