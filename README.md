@@ -1,5 +1,7 @@
 # merng_stack_socialapp
 
+Deployed on heroku [here](https://merng-social-app-client.herokuapp.com/)
+
 ## Server
 
 - add apollo
