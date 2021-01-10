@@ -90,7 +90,7 @@ module.exports = {
         });
       }
 
-      //Hash pass and create aut token
+      //Hash pass and create auth token
       password = await bcrypt.hash(password, 12);
 
       const newUser = new User({
