@@ -23,4 +23,10 @@ const postSchema = new Schema({
   },
 });
 
+const commentSchema = new Schema({
+  body: String,
+  username: String,
+  createdAt: String,
+});
+
 module.exports = model("Post", postSchema);
