@@ -6,7 +6,6 @@ const {
   validateRegisterInput,
   validateLoginInput,
 } = require("../../utils/validators");
-const { JWT_SECRET } = require("../../config");
 const User = require("../../models/User");
 
 function generateToken(user) {
@@ -16,7 +15,7 @@ function generateToken(user) {
       email: user.email,
       username: user.username,
     },
-    JWT_SECRET,
+    process.env.JWT_SECRET,
     { expiresIn: "1h" }
   );
 }
