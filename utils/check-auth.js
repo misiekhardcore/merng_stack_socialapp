@@ -9,7 +9,7 @@ module.exports = (context) => {
     const token = authHeader.split("Bearer ")[1];
     if (token) {
       try {
-        const user = jwt.verify(token, process.envJWT_SECRET);
+        const user = jwt.verify(token, process.env.JWT_SECRET);
         return user;
       } catch (error) {
         throw new AuthenticationError("Invalid/Expired token");

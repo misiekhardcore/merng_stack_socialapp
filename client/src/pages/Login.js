@@ -25,7 +25,7 @@ const Login = (props) => {
       props.history.push("/");
     },
     onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      setErrors(err.graphQLErrors[0]?.extensions?.exception?.errors || {});
     },
     variables: state,
   });
@@ -44,7 +44,7 @@ const Login = (props) => {
           placeholder="Username..."
           type="text"
           value={state.username}
-          error={errors.username || errors.general ? true : false}
+          error={errors?.username || errors?.general ? true : false}
           onChange={handleChange}
         />
         <Form.Input
@@ -53,7 +53,7 @@ const Login = (props) => {
           placeholder="Password..."
           type="password"
           value={state.password}
-          error={errors.password || errors.general ? true : false}
+          error={errors?.password || errors?.general ? true : false}
           onChange={handleChange}
         />
         <Button type="submit" primary>
