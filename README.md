@@ -3,6 +3,10 @@
 Deployed on heroku [here](https://merng-social-app-client.herokuapp.com/)
 You can log in with username `user` and password `user` but feel free to register
 
+To use it add .env to root directory and add `PORT` with local server port number, `MONGO` with mongo string to your database and `JWTSECRET` with secret string for your JWT.
+in `client/src/ApolloProvider.js` change `uri` in `httplink` to `http://localhost:YOUR_PORT_FROM_ENV`.
+Now open one console in root dir and run `yarn start` and another in client and also run `yarn start`.
+
 ## Server
 
 - add apollo
