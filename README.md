@@ -1,6 +1,7 @@
 # merng_stack_socialapp
 
 Deployed on heroku [here](https://merng-social-app-client.herokuapp.com/)
+You can log in with username `user` and password `user` but feel free to register
 
 ## Server
 
