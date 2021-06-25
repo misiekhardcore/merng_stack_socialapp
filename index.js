@@ -19,7 +19,7 @@ const server = new ApolloServer({
 
 //DATABASE CONNECTION AND SERVER START
 mongoose
-  .connect(MONGODB, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     return server.listen({ port: process.env.PORT || 5000 });
   })
